@@ -3,36 +3,6 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set diff tool
-" see :help diff-diffexpr
-" and ref: http://vim.wikia.com/wiki/Running_diff
-set diffexpr=MyDiff()
-function! MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let mapleader = ','
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,12 +93,6 @@ set backspace=indent,eol,start
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" show tab
-"set list
-"set listchars=tab:\|\,trail:.,extends:>,precedes:<
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " startup option
 set shortmess=atl
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,slash,unix,resize
@@ -175,99 +139,19 @@ Bundle 'gmarik/vundle'
 Bundle 'Engspchk'
 
 " colorscheme plugin && colorscheme
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'freya'
-
-" source code structure and function list display
-Bundle 'taglist.vim'
-
-" auto complete for C/C++
-Bundle 'OmniCppComplete'
-
-" comment plugin
-Bundle 'The-NERD-Commenter'
-
-" generate documents from comments, and fast gen standard function comment
-Bundle 'DoxygenToolkit.vim'
-
-" switch between .cpp and .h
-Bundle 'a.vim'
 
 " file managment
 Bundle 'The-NERD-tree'
 
 " code complete
 Bundle 'Shougo/neocomplcache'
-if has('python')
-	Bundle 'UltiSnips'
-endif 
 Bundle 'SuperTab'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-
-" syntax highlight
-Bundle 'JavaScript-syntax'
-Bundle 'jQuery'
-Bundle 'othree/html5.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'php.vim-html-enhanced'
-Bundle 'pangloss/vim-javascript'
-
-" need to change src to support ch,
-" pls ref: https://github.com/muzuiget/hacking-patches/blob/master/tabular_cjk_width.patch
-Bundle 'Tabular'
-
-" setting marks
-Bundle 'mikeage/ShowMarks'
-
-" jump between tags, for html
-Bundle 'matchit.zip'
-Bundle 'MatchTag'
-
-" different color for tags
-Bundle 'Mark'
 
 Bundle 'Lokaltog/vim-easymotion'
 
-Bundle 'ShowTrailingWhitespace' 
-
-" enchance status line
-if has('python')
-	Bundle 'Lokaltog/powerline'
-else
-	Bundle 'scrooloose/vim-statline'
-endif
-
 "active plugin and filetype relationship
 filetype plugin indent on	" required!
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" taglist option
-map <F3> :silent! Tlist<CR>
-let Tlist_Ctags_Cmd=$HOME.'\vimfiles\ctags.exe'
-" tags folder
-set tags+=$HOME/vimfiles/tags/cpp
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OmniCppComplete options
-" build tags for your own project with ^F12
-map <C-F12> :execute '!' . Tlist_Ctags_Cmd . ' -R --c++-kinds=+p --fields=+iaS --extra=+q' <CR>
-map <C-S-F12> <slient> <C-F12>
-let OmniCpp_NamespaceSearch = 1
-
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std"]
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -292,19 +176,6 @@ let g:neocomplcache_enable_auto_select = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" DoxygenToolkit option
-map fg : Dox<cr>
-let g:DoxygenToolkit_authorName="zhuliang.li"
-let g:DoxygenToolkit_licenseTag="Personal Licence\<center>"
-let g:DoxygenToolkit_undocTag="DOXIGEN_SKIP_BLOCK"
-let g:DoxygenToolkit_briefTag_pre="@brief\t"
-let g:DoxygenToolkit_paramTag_pre="@param\t"
-let g:DoxygenToolkit_returnTag="@return\t"
-let g:DoxygenToolkit_briefTag_funcName="no"
-let g:DoxygenToolkit_maxFunctionProtoLines=30
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree options
 let NERDChristmasTree=1
 let NERDTreeAutoCenter=1
@@ -321,30 +192,6 @@ let NERDTreeChDirMode=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Oooops, only work for python vim
-" powerline options
-if has('python')
-	let g:Powerline_symbols = 'fancy'
-	nmap <leader>r :PowerlineReloadColorScheme<CR>
-	let g:Powerline_mode_n  = 'N'
-	let g:Powerline_mode_i  = 'I'
-	let g:Powerline_mode_R  = 'R'
-	let g:Powerline_mode_v  = 'v'
-	let g:Powerline_mode_V  = 'V'
-	let g:Powerline_mode_cv = 'cv'
-	let g:Powerline_mode_s  = 's'
-	let g:Powerline_mode_S  = 'S'
-	let g:Powerline_mode_cs = 'cs'
-else
-" statline options
-	let g:statline_fugitive = 1
-	let g:statline_rvm = 1
-	let g:statline_rbenv = 1
-	let g:statline_show_charcode = 1
-endif
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " other
 autocmd FileType php,phtml setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType css,less setlocal omnifunc=csscomplete#CompleteCSS
@@ -355,63 +202,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" showmarks options
-let g:showmarks_enable      = 0
-let g:showmarks_include     = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-let g:showmarks_ignore_type = 'hqm'
-" m{mark} setmark; '{mark} jump to mark
-" <leader>mt - toggle showmark
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" options for different color tags
-nmap <silent> <Leader>hl <plug>MarkSet
-vmap <silent> <Leader>hl <plug>MarkSet
-nmap <silent> <Leader>hh <plug>MarkClear
-vmap <silent> <Leader>hh <plug>MarkClear
-nmap <silent> <Leader>hr <plug>MarkRegex
-vmap <silent> <Leader>hr <plug>MarkRegex
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim markdown options
-let g:vim_markdown_folding_disabled = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" move cursor in insert mode
-inoremap <C-h> <left>
-inoremap <C-l> <right>
-inoremap <C-j> <C-o>gj
-inoremap <C-k> <C-o>gk
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" self defined filetype relationship
-"au BufNewFile,BufRead *.less set filetype=css
-"au BufNewFile,BufRead *.phtml set filetype=php
-"au BufNewFile,BufRead *.js set ft=javascript.jquery
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" mm for regulize lines, trim()
-nmap mm :%s/\r//g<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ff for complete fore-back
-vmap ff "zdi<?=$this->_('<C-R>z');?><ESC>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
 " put after bundle setting, otherwise freya would not be found
-"colorscheme freya
-syntax enable
-set background=dark
-colorscheme solarized
-let g:solarized_termcolors=256
-let g:solarized_degrade=1
-let g:solarized_contrast='low'
+colorscheme freya
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
