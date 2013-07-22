@@ -69,8 +69,11 @@ set ambiwidth=double
 " set language
 "set langmenu=zh_CN.UTF-8
 "language message.zh_CN.UTF-8
-set guifont=Courier_New:h10:cANSI
-"set guifontwide=Microsoft_YaHei_UI:h10
+" 测试中文
+set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
+"set guifont=Source_Code_Pro:h10:cANSI
+"set guifont=Courier_New:h10:cANSI
+set guifontwide=YouYuan:h12
 
 set helplang=cn
 source $VIMRUNTIME/delmenu.vim
@@ -107,7 +110,7 @@ set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto indents
-set noautoindent
+"set noautoindent
 set cindent
 setlocal cinoptions=g0
 set smartindent
@@ -168,6 +171,13 @@ call vundle#rc('$HOME/vimfiles/bundle/')
 " vundle core
 Bundle 'gmarik/vundle'
 
+" genetic pulgins
+Bundle 'Engspchk'
+
+" colorscheme plugin && colorscheme
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'freya'
+
 " source code structure and function list display
 Bundle 'taglist.vim'
 
@@ -194,9 +204,6 @@ endif
 Bundle 'SuperTab'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-
-" preferred colorscheme
-Bundle 'freya'
 
 " syntax highlight
 Bundle 'JavaScript-syntax'
@@ -399,6 +406,12 @@ vmap ff "zdi<?=$this->_('<C-R>z');?><ESC>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
 " put after bundle setting, otherwise freya would not be found
-colorscheme freya
+"colorscheme freya
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
+let g:solarized_degrade=1
+let g:solarized_contrast='low'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
