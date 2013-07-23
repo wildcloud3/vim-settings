@@ -138,6 +138,13 @@ Bundle 'gmarik/vundle'
 " colorscheme plugin && colorscheme
 Bundle 'peaksea'
 
+" Git intergration
+Bundle 'fugitive.vim'
+
+" Fuzzy file finder
+Bundle 'ctrlp.vim'
+Bundle 'Syntastic'
+
 " trinity to make a sourceInsight view
 Bundle 'SrcExpl'
 Bundle 'The-NERD-tree'
@@ -182,14 +189,23 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'ShowTrailingWhitespace' 
 
 " enchance status line
-if has('python')
-	Bundle 'Lokaltog/powerline'
-else
-	Bundle 'scrooloose/vim-statline'
-endif
+Bundle 'bling/vim-airline'
+Bundle 'bling/vim-bufferline'
 
 "active plugin and filetype relationship
 filetype plugin indent on	" required!
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" color scheme
+syntax enable
+set background=dark
+
+" for peaksea
+if !has("gui_running")
+	set t_Co=256
+endif
+colorscheme peaksea
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -271,6 +287,11 @@ let g:DoxygenToolkit_maxFunctionProtoLines=30
 " bufexplorer options
 let g:bufExplorerSortBy = 'name'
 nmap <silent> <Leader>be :BufExplorer<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" syntastic options
+let g:syntastic_enable_highlighting = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -370,17 +391,5 @@ nmap mm :%s/\r//g<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ff for complete fore-back
 vmap ff "zdi<?=$this->_('<C-R>z');?><ESC>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" color scheme
-syntax enable
-set background=dark
-
-" for peaksea
-if !has("gui_running")
-	set t_Co=256
-endif
-colorscheme peaksea
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
