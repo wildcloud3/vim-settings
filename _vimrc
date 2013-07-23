@@ -201,8 +201,6 @@ Bundle 'a.vim'
 Bundle 'c.vim'
 Bundle 'echofunc.vim'
 
-" file managment
-
 " code complete
 Bundle 'Shougo/neocomplcache'
 Bundle 'SuperTab'
@@ -343,30 +341,6 @@ let NERDTreeWinSize=31
 map <silent> <A-t> <ESC>:NERDTreeToggle<CR>
 " set opened nerdtree dir as working dir
 let NERDTreeChDirMode=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Oooops, only work for python vim
-" powerline options
-if has('python')
-	let g:Powerline_symbols = 'fancy'
-	nmap <leader>r :PowerlineReloadColorScheme<CR>
-	let g:Powerline_mode_n  = 'N'
-	let g:Powerline_mode_i  = 'I'
-	let g:Powerline_mode_R  = 'R'
-	let g:Powerline_mode_v  = 'v'
-	let g:Powerline_mode_V  = 'V'
-	let g:Powerline_mode_cv = 'cv'
-	let g:Powerline_mode_s  = 's'
-	let g:Powerline_mode_S  = 'S'
-	let g:Powerline_mode_cs = 'cs'
-else
-" statline options
-	let g:statline_fugitive = 1
-	let g:statline_rvm = 1
-let g:statline_rbenv = 1
-	let g:statline_show_charcode = 1
-endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
