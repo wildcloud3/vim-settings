@@ -4,6 +4,25 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 
 let mapleader = ','
+let g:mapleader = ','
+
+" treat long line as break lines
+map j gj
+map k gk
+
+" map <SPACE> to / search and <c-space> to ? backward search
+map <space> /
+map <c-space> ?
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" status line, if no plugin powerup
+
+" always show statusline
+set laststatus=2
+" format
+"set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " hide tool bar
@@ -73,9 +92,16 @@ set history=1024
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " always show line number
+set wildmenu
+" ignore compiled files
+set wildignore=*.o,*~
+
 set number
 set ruler
 set cursorline
+
+"don's redraw when running macros
+set lazyredraw
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,6 +116,13 @@ set shiftwidth=4
 set tabstop=4
 
 set backspace=indent,eol,start
+
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
+
+" set 7 lines after cursorline
+set so=10
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -144,6 +177,7 @@ Bundle 'fugitive.vim'
 " Fuzzy file finder
 Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
+Bundle 'YankRing.vim'
 
 " trinity to make a sourceInsight view
 Bundle 'SrcExpl'
@@ -162,9 +196,10 @@ Bundle 'The-NERD-Commenter'
 " generate documents from comments, and fast gen standard function comment
 Bundle 'DoxygenToolkit.vim'
 
-" switch between .cpp and .h
+" enhance C/Cpp
 Bundle 'a.vim'
 Bundle 'c.vim'
+Bundle 'echofunc.vim'
 
 " file managment
 
@@ -198,7 +233,7 @@ filetype plugin indent on	" required!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
-syntax enable
+syntax on
 set background=dark
 
 " for peaksea
@@ -342,6 +377,14 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" use syntax complete if nothing else available
+if has("autocmd") && exists("+omnifunc")
+	autocmd FileType *
+		\ if &omnifunc == "" |
+		\     setlocal omnifunc=syntaxcomplete#Complete |
+		\ endif
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
