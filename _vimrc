@@ -17,7 +17,6 @@ map <c-space> ?
 " auto save on lost focus
 autocmd FocusLost * :wa
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " status line, if no plugin powerup
 
@@ -202,29 +201,6 @@ Bundle 'mikeage/ShowMarks'
 " different color for tags
 Bundle 'Mark'
 
-" for web dev {{{
-" syntax highlight
-Bundle 'JavaScript-syntax'
-Bundle 'jQuery'
-Bundle 'othree/html5.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'php.vim-html-enhanced'
-Bundle 'pangloss/vim-javascript'
-
-" css color preview, show corresponding color on color HEX
-Bundle 'css-color-preview'
-
-"jump between tags, for html
-Bundle 'matchit.zip'
-Bundle 'MatchTag'
-
-" Zen coding
-Bundle 'ZenCoding.vim'
-Bundle 'rstacruz/sparkup'
-
-" }}}
-
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'ShowTrailingWhitespace' 
@@ -289,17 +265,6 @@ autocmd FileType php :set dictionary+=$HOME/vimfiles/dict/php.dict
 autocmd FileType c,h :set dictionary+=$HOME/vimfiles/dict/c.dict
 autocmd FileType cpp,h,hpp :set dictionary+=$HOME/vimfiles/dict/cpp.dict
 autocmd FileType vim :set dictionary+=$HOME/vimfiles/dict/vim.dict
-
-" for js only
-set complete+=k
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" jsl for js check
-autocmd FileType javascript set makeprg=jsl\ -nologo\ -nofilelisting\ -nosummary\ -nocontext\ -conf\ $HOME\vimfiles\jsl\jsl.default.conf\ -process\ %
-autocmd FileType javascript set errorformat=%f(%l):\ %m
-autocmd FileType javascript inoremap <silent> <F5> <C-o>:make<cr>
-autocmd FileType javascript map <silent> <F5> :make<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -354,27 +319,7 @@ let g:vim_markdown_folding_disabled = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" move cursor in insert mode
-inoremap <C-h> <left>
-inoremap <C-l> <right>
-inoremap <C-j> <C-o>gj
-inoremap <C-k> <C-o>gk
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" self defined filetype relationship
-"au BufNewFile,BufRead *.less set filetype=css
-"au BufNewFile,BufRead *.phtml set filetype=php
-"au BufNewFile,BufRead *.js set ft=javascript.jquery
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " mm for regulize lines, trim()
 nmap mm :%s/\r//g<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ff for complete fore-back
-vmap ff "zdi<?=$this->_('<C-R>z');?><ESC>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
