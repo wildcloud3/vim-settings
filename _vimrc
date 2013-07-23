@@ -14,6 +14,10 @@ map k gk
 map <space> /
 map <c-space> ?
 
+" auto save on lost focus
+autocmd FocusLost * :wa
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " status line, if no plugin powerup
 
@@ -169,21 +173,21 @@ call vundle#rc('$HOME/vimfiles/bundle/')
 Bundle 'gmarik/vundle'
 
 Bundle 'Engspchk'
+
 " colorscheme plugin && colorscheme
 Bundle 'peaksea'
 
 " Git intergration
 Bundle 'fugitive.vim'
 
-" Fuzzy file finder
+" basic useful scripts
 Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
 Bundle 'YankRing.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
-
-" comment plugin
 Bundle 'The-NERD-Commenter'
+Bundle 'ack.vim'
 
 " code complete
 Bundle 'Shougo/neocomplcache'
@@ -195,9 +199,31 @@ Bundle 'Tabular'
 
 " setting marks
 Bundle 'mikeage/ShowMarks'
-
 " different color for tags
 Bundle 'Mark'
+
+" for web dev {{{
+" syntax highlight
+Bundle 'JavaScript-syntax'
+Bundle 'jQuery'
+Bundle 'othree/html5.vim'
+Bundle 'groenewege/vim-less'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'php.vim-html-enhanced'
+Bundle 'pangloss/vim-javascript'
+
+" css color preview, show corresponding color on color HEX
+Bundle 'css-color-preview'
+
+"jump between tags, for html
+Bundle 'matchit.zip'
+Bundle 'MatchTag'
+
+" Zen coding
+Bundle 'ZenCoding.vim'
+Bundle 'rstacruz/sparkup'
+
+" }}}
 
 Bundle 'Lokaltog/vim-easymotion'
 
@@ -229,10 +255,8 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
-" set minimum syntax keyword length
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-"inoremap <expr><space> pumvisible() ? neocomplcache#close_popup().'<SPACE>' : '<SPACE>'
 
 " define keyword
 if !exists('g:neocomplcache_keyword_patterns')
@@ -242,6 +266,40 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " AutoComplPop like behavior
 let g:neocomplcache_enable_auto_select = 1
+
+" other
+autocmd FileType php,phtml setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType css,less setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" use syntax complete if nothing else available
+if has("autocmd") && exists("+omnifunc")
+	autocmd FileType *
+		\ if &omnifunc == "" |
+		\     setlocal omnifunc=syntaxcomplete#Complete |
+		\ endif
+endif
+
+" set dict files
+autocmd FileType js :set dictionary+=$HOME/vimfiles/dict/javascript.dict
+autocmd FileType php :set dictionary+=$HOME/vimfiles/dict/php.dict
+autocmd FileType c,h :set dictionary+=$HOME/vimfiles/dict/c.dict
+autocmd FileType cpp,h,hpp :set dictionary+=$HOME/vimfiles/dict/cpp.dict
+autocmd FileType vim :set dictionary+=$HOME/vimfiles/dict/vim.dict
+
+" for js only
+set complete+=k
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" jsl for js check
+autocmd FileType javascript set makeprg=jsl\ -nologo\ -nofilelisting\ -nosummary\ -nocontext\ -conf\ $HOME\vimfiles\jsl\jsl.default.conf\ -process\ %
+autocmd FileType javascript set errorformat=%f(%l):\ %m
+autocmd FileType javascript inoremap <silent> <F5> <C-o>:make<cr>
+autocmd FileType javascript map <silent> <F5> :make<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -269,24 +327,6 @@ let NERDTreeWinSize=31
 map <silent> <A-t> <ESC>:NERDTreeToggle<CR>
 " set opened nerdtree dir as working dir
 let NERDTreeChDirMode=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" other
-autocmd FileType php,phtml setlocal omnifunc=phpcomplete#CompletePHP
-autocmd FileType css,less setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" use syntax complete if nothing else available
-if has("autocmd") && exists("+omnifunc")
-	autocmd FileType *
-		\ if &omnifunc == "" |
-		\     setlocal omnifunc=syntaxcomplete#Complete |
-		\ endif
-endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
