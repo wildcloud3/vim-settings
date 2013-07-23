@@ -4,6 +4,25 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 
 let mapleader = ','
+let g:mapleader = ','
+
+" treat long line as break lines
+map j gj
+map k gk
+
+" map <SPACE> to / search and <c-space> to ? backward search
+map <space> /
+map <c-space> ?
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" status line, if no plugin powerup
+
+" always show statusline
+set laststatus=2
+" format
+"set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " hide tool bar
@@ -73,9 +92,16 @@ set history=1024
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " always show line number
+set wildmenu
+" ignore compiled files
+set wildignore=*.o,*~
+
 set number
 set ruler
 set cursorline
+
+"don's redraw when running macros
+set lazyredraw
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,6 +116,13 @@ set shiftwidth=4
 set tabstop=4
 
 set backspace=indent,eol,start
+
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
+
+" set 7 lines after cursorline
+set so=10
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -135,23 +168,58 @@ call vundle#rc('$HOME/vimfiles/bundle/')
 " vundle core
 Bundle 'gmarik/vundle'
 
-" genetic pulgins
-Bundle 'Engspchk'
-
 " colorscheme plugin && colorscheme
-Bundle 'freya'
+Bundle 'peaksea'
 
-" file managment
+" Git intergration
+Bundle 'fugitive.vim'
+
+" Fuzzy file finder
+Bundle 'ctrlp.vim'
+Bundle 'Syntastic'
+Bundle 'YankRing.vim'
+Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
+
+" comment plugin
+Bundle 'The-NERD-Commenter'
 
 " code complete
 Bundle 'Shougo/neocomplcache'
 Bundle 'SuperTab'
 
+" need to change src to support ch,
+" pls ref: https://github.com/muzuiget/hacking-patches/blob/master/tabular_cjk_width.patch
+Bundle 'Tabular'
+
+" setting marks
+Bundle 'mikeage/ShowMarks'
+
+" different color for tags
+Bundle 'Mark'
+
 Bundle 'Lokaltog/vim-easymotion'
+
+Bundle 'ShowTrailingWhitespace' 
+
+" enchance status line
+Bundle 'bling/vim-airline'
+Bundle 'bling/vim-bufferline'
 
 "active plugin and filetype relationship
 filetype plugin indent on	" required!
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" color scheme
+syntax on
+set background=dark
+
+" for peaksea
+if !has("gui_running")
+	set t_Co=256
+endif
+colorscheme peaksea
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,6 +241,17 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " AutoComplPop like behavior
 let g:neocomplcache_enable_auto_select = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" bufexplorer options
+let g:bufExplorerSortBy = 'name'
+nmap <silent> <Leader>be :BufExplorer<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" syntastic options
+let g:syntastic_enable_highlighting = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,11 +278,62 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" use syntax complete if nothing else available
+if has("autocmd") && exists("+omnifunc")
+	autocmd FileType *
+		\ if &omnifunc == "" |
+		\     setlocal omnifunc=syntaxcomplete#Complete |
+		\ endif
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" color scheme
-" put after bundle setting, otherwise freya would not be found
-colorscheme freya
+" showmarks options
+let g:showmarks_enable      = 0
+let g:showmarks_include     = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let g:showmarks_ignore_type = 'hqm'
+" m{mark} setmark; '{mark} jump to mark
+" <leader>mt - toggle showmark
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" options for different color tags
+nmap <silent> <Leader>hl <plug>MarkSet
+vmap <silent> <Leader>hl <plug>MarkSet
+nmap <silent> <Leader>hh <plug>MarkClear
+vmap <silent> <Leader>hh <plug>MarkClear
+nmap <silent> <Leader>hr <plug>MarkRegex
+vmap <silent> <Leader>hr <plug>MarkRegex
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim markdown options
+let g:vim_markdown_folding_disabled = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" move cursor in insert mode
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+inoremap <C-j> <C-o>gj
+inoremap <C-k> <C-o>gk
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" self defined filetype relationship
+"au BufNewFile,BufRead *.less set filetype=css
+"au BufNewFile,BufRead *.phtml set filetype=php
+"au BufNewFile,BufRead *.js set ft=javascript.jquery
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" mm for regulize lines, trim()
+nmap mm :%s/\r//g<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ff for complete fore-back
+vmap ff "zdi<?=$this->_('<C-R>z');?><ESC>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
