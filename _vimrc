@@ -3,36 +3,6 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set diff tool
-" see :help diff-diffexpr
-" and ref: http://vim.wikia.com/wiki/Running_diff
-set diffexpr=MyDiff()
-function! MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let mapleader = ','
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,12 +93,6 @@ set backspace=indent,eol,start
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" show tab
-"set list
-"set listchars=tab:\|\,trail:.,extends:>,precedes:<
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " startup option
 set shortmess=atl
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,slash,unix,resize
@@ -171,15 +135,17 @@ call vundle#rc('$HOME/vimfiles/bundle/')
 " vundle core
 Bundle 'gmarik/vundle'
 
-" genetic pulgins
-Bundle 'Engspchk'
-
 " colorscheme plugin && colorscheme
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'freya'
 
-" source code structure and function list display
+" trinity to make a sourceInsight view
+Bundle 'SrcExpl'
+Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
+Bundle 'Trinity'
+
+Bundle 'bufexplorer.zip'
 
 " auto complete for C/C++
 Bundle 'OmniCppComplete'
@@ -192,27 +158,15 @@ Bundle 'DoxygenToolkit.vim'
 
 " switch between .cpp and .h
 Bundle 'a.vim'
+Bundle 'c.vim'
 
 " file managment
-Bundle 'The-NERD-tree'
 
 " code complete
 Bundle 'Shougo/neocomplcache'
-if has('python')
-	Bundle 'UltiSnips'
-endif 
 Bundle 'SuperTab'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-
-" syntax highlight
-Bundle 'JavaScript-syntax'
-Bundle 'jQuery'
-Bundle 'othree/html5.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'php.vim-html-enhanced'
-Bundle 'pangloss/vim-javascript'
 
 " need to change src to support ch,
 " pls ref: https://github.com/muzuiget/hacking-patches/blob/master/tabular_cjk_width.patch
@@ -220,10 +174,6 @@ Bundle 'Tabular'
 
 " setting marks
 Bundle 'mikeage/ShowMarks'
-
-" jump between tags, for html
-Bundle 'matchit.zip'
-Bundle 'MatchTag'
 
 " different color for tags
 Bundle 'Mark'
@@ -249,6 +199,20 @@ map <F3> :silent! Tlist<CR>
 let Tlist_Ctags_Cmd=$HOME.'\vimfiles\ctags.exe'
 " tags folder
 set tags+=$HOME/vimfiles/tags/cpp
+
+" set other for trinity
+" open and close tri all
+nmap <F9> :TrinityToggleAll<cr>
+" open and close taglist all
+nmap <F10> :TrinityToggleTagList<cr>
+" open and close nerdtree all
+nmap <F11> :TrinityToggleNERDTree<cr>
+
+function! UpdateTags()
+	silent execute '!' . Tlist_Ctags_Cmd . ' -R --fields=+ianS --extra=+q'
+endfunction
+
+nmap <F12> :call UpdateTags()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -305,6 +269,12 @@ let g:DoxygenToolkit_maxFunctionProtoLines=30
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+" bufexplorer options
+let g:bufExplorerSortBy = 'name'
+nmap <silent> <Leader>be :BufExplorer<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd tree options
 let NERDChristmasTree=1
 let NERDTreeAutoCenter=1
@@ -339,7 +309,7 @@ else
 " statline options
 	let g:statline_fugitive = 1
 	let g:statline_rvm = 1
-	let g:statline_rbenv = 1
+let g:statline_rbenv = 1
 	let g:statline_show_charcode = 1
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
