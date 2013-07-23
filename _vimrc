@@ -168,6 +168,7 @@ call vundle#rc('$HOME/vimfiles/bundle/')
 " vundle core
 Bundle 'gmarik/vundle'
 
+Bundle 'Engspchk'
 " colorscheme plugin && colorscheme
 Bundle 'peaksea'
 
