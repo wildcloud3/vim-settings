@@ -136,8 +136,7 @@ call vundle#rc('$HOME/vimfiles/bundle/')
 Bundle 'gmarik/vundle'
 
 " colorscheme plugin && colorscheme
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'freya'
+Bundle 'peaksea'
 
 " trinity to make a sourceInsight view
 Bundle 'SrcExpl'
@@ -375,13 +374,13 @@ vmap ff "zdi<?=$this->_('<C-R>z');?><ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
-" put after bundle setting, otherwise freya would not be found
-"colorscheme freya
 syntax enable
 set background=dark
-colorscheme solarized
-let g:solarized_termcolors=256
-let g:solarized_degrade=1
-let g:solarized_contrast='low'
+
+" for peaksea
+if !has("gui_running")
+	set t_Co=256
+endif
+colorscheme peaksea
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
