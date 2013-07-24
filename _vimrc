@@ -1,7 +1,5 @@
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
-behave mswin
 
 let mapleader = ','
 let g:mapleader = ','
@@ -118,8 +116,6 @@ set showmatch
 set shiftwidth=4
 set tabstop=4
 
-set backspace=indent,eol,start
-
 set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
@@ -140,7 +136,7 @@ if has('multi_byte_ime')
     " color for IME not opened
     hi Cursor guifg=bg guibg=Orange gui=NONE
     " color for IME opened
-    hi CursorIM guifg=NONE guibg=Skyblue gui=NONE
+    hi CursorIM guifg=NONE guibg=Blue gui=NONE
     " close auto switch IME function of VIM, in insert and visual mode
     set iminsert=0 imsearch=0
     " remember the insert mode IME statue
@@ -155,7 +151,7 @@ set clipboard+=unnamed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " reload after edit _vimrc
-autocmd! bufwritepost _vimrc source $HOME/_vimrc
+autocmd! bufwritepost _vimrc source $VIM/settings/_vimrc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -165,8 +161,8 @@ autocmd! bufwritepost _vimrc source $HOME/_vimrc
 filetype off
 
 " set vundle path
-set rtp+=$HOME/vimfiles/bundle/vundle/
-call vundle#rc('$HOME/vimfiles/bundle/')
+set rtp+=$VIM/settings/vimfiles/bundle/vundle/
+call vundle#rc('$VIM/settings/vimfiles/bundle/')
 
 " vundle core
 Bundle 'gmarik/vundle'
