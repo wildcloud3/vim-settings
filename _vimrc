@@ -22,7 +22,6 @@ autocmd FocusLost * :wa
 set laststatus=2
 " format
 "set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -174,6 +173,7 @@ Bundle 'peaksea'
 
 " Git intergration
 Bundle 'fugitive.vim'
+Bundle 'FencView.vim'
 
 " basic useful scripts
 Bundle 'ctrlp.vim'
@@ -185,8 +185,11 @@ Bundle 'The-NERD-Commenter'
 Bundle 'ack.vim'
 
 " code complete
-Bundle 'Shougo/neocomplcache'
-Bundle 'SuperTab'
+"Bundle 'Shougo/neocomplcache'
+"Bundle 'SuperTab'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'AutoClose'
+Bundle 'UltiSnips'
 
 " need to change src to support ch,
 " pls ref: https://github.com/muzuiget/hacking-patches/blob/master/tabular_cjk_width.patch
