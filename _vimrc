@@ -5,7 +5,7 @@ source $VIMRUNTIME/mswin.vim
 " config my personal vim setting here
 " temporarily, only: basic, c, web
 
-let g:cfg_option = ['basic', 'web']
+let g:cfg_option = ['basic', 'c', 'py']
 
 source $VIM/settings/vimrc_basic.vim
 
@@ -31,7 +31,7 @@ if has('multi_byte_ime')
     " close auto switch IME function of VIM, in insert and visual mode
     set iminsert=0 imsearch=0
     " remember the insert mode IME statue
-    "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+    inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -71,3 +71,5 @@ for item in g:cfg_option
 	endif
 endfor
 
+" add temp shortcuts
+"autocmd BufNewFile,BufRead *.log :set nowrap

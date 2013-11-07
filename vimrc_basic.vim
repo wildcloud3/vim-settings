@@ -20,11 +20,12 @@ set laststatus=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " hide tool bar
-set guioptions-=m
-set guioptions-=T
-set guioptions-=L
-set guioptions-=r
-set guioptions-=b
+"set guioptions-=m
+"set guioptions-=T
+"set guioptions-=L
+"set guioptions-=r
+"set guioptions-=b
+set go=
 
 " launch maximize window 
 if has('gui_running')

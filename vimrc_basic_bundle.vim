@@ -1,5 +1,6 @@
 Bundle 'Engspchk'
 Bundle 'peaksea'
+Bundle 'freya'
 Bundle 'FencView.vim'
 Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
@@ -25,13 +26,8 @@ Bundle 'fugitive.vim'
 
 " code complete
 Bundle 'AutoClose'
-if has('python')
-	Bundle 'UltiSnips'
-	Bundle 'Valloric/YouCompleteMe'
-else
-	"Bundle 'Shougo/neocomplcache'
-	"Bundle 'SuperTab'
-endif
+Bundle 'Shougo/neocomplcache'
+Bundle 'SuperTab'
 
 " enchance status line
 Bundle 'bling/vim-airline'
