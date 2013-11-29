@@ -71,12 +71,6 @@ set noerrorbells
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set >> and <<, move 4 spaces
-set shiftwidth=4
-set smarttab
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildmenu
 " ignore compiled files
 set wildignore=*.o,*~
@@ -99,8 +93,15 @@ setlocal cinoptions=g0
 set smartindent
 set showmatch
 
+" set >> and <<, move 4 spaces
+set smarttab
 set shiftwidth=4
 set tabstop=4
+set expandtab
+
+" and some different options based on filetype
+autocmd BufNewFile, BufRead *.html, *.htm, *.css, *.js set noexpandtab tabstop=2 shiftwidth=2
+"autocmd BufNewFile, BufRead *.py set nosmarttab
 
 set foldmethod=indent
 set foldnestmax=3
@@ -128,4 +129,19 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,slas
 syntax on
 set background=dark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" run file depend on the script type
+function! Run()
+	let type = b:current_syntax
+	if type == "python"
+		exec "!python -B %"
+	elseif type == "dosbatch"
+		exec "!%"
+	endif
+endfunction
+
+nmap <F5> :call Run()<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 

@@ -2,16 +2,7 @@
 " run python
 " in fact, any thing run-script style could be assembled here
 
-nmap <leader>py :!python %<cr>
-
-function! Run()
-	let type = b:current_syntax
-	if type == "python"
-		exec "!python %"
-	endif
-endfunction
-
-nmap <F5> :call Run()<cr>
+nmap <leader>py :!python -B %<cr>
 
 let python_highlight_all = 1
 

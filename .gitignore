@@ -1,2 +1,3 @@
 *.swp
-vimfiles/bundle/
+vimfiles/bundle
+vimfiles/bundle/vundle

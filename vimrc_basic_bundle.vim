@@ -1,16 +1,20 @@
 Bundle 'Engspchk'
 Bundle 'peaksea'
 Bundle 'freya'
+
 Bundle 'FencView.vim'
 Bundle 'ctrlp.vim'
 Bundle 'Syntastic'
 Bundle 'YankRing.vim'
+
 Bundle 'bufexplorer.zip'
 Bundle 'The-NERD-tree'
 Bundle 'The-NERD-Commenter'
+
 Bundle 'ack.vim'
+
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'ShowTrailingWhitespace' 
+Bundle 'ShowTrailingWhitespace'
 
 " setting marks
 Bundle 'mikeage/ShowMarks'
@@ -37,3 +41,5 @@ if !has('win32')
 	Bundle 'powerline'
 endif
 
+" vim calculator
+Bundle 'HowMuch'

@@ -95,3 +95,11 @@ vmap <silent> <Leader>hh <plug>MarkClear
 nmap <silent> <Leader>hr <plug>MarkRegex
 vmap <silent> <Leader>hr <plug>MarkRegex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" howmuch options
+" The scale of the result
+let g:HowMuch_scale = 2
+" the engine order for auto-calculation
+let g:HowMuch_auto_engines = ['bc', 'vim', 'py']
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
