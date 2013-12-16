@@ -103,3 +103,5 @@ let g:HowMuch_scale = 2
 " the engine order for auto-calculation
 let g:HowMuch_auto_engines = ['bc', 'vim', 'py']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd BufReadPre *.log :set nowrap

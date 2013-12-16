@@ -125,6 +125,13 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,slas
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+" persistent undo
+set undofile
+set undodir=$VIM/\_undodir
+set undolevels=1000
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
 syntax on
 set background=dark
