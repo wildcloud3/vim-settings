@@ -1,5 +1,5 @@
 set nocompatible
-source $VIMRUNTIME/mswin.vim
+"source $VIMRUNTIME/mswin.vim
 
 " zhuliang.li, 2013.07.27
 " config my personal vim setting here

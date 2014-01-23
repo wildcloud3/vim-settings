@@ -56,6 +56,10 @@ let g:bufExplorerSortBy = 'name'
 nmap <silent> <Leader>be :BufExplorer<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" for yankring
+nmap <silent> <Leader>yr :YRShow<cr>
+let g:yankring_replace_n_pkey = ''
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic options
 let g:syntastic_enable_highlighting = 1
@@ -103,5 +107,21 @@ let g:HowMuch_scale = 2
 " the engine order for auto-calculation
 let g:HowMuch_auto_engines = ['bc', 'vim', 'py']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" gundo.vim
+noremap <F2> :GundoToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" for vim session
+let g:session_autosave = 1
+let g:session_autoload = 1
+" periodic in minutes
+let g:session_autosave_periodic = 5
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" tagbar
+let g:tagbar_autoclose = 1
+let g:tagbar_ctags_bin = '$VIM/settings/vimfiles/ctags.exe'
+noremap <S-F3> :Tagbar<CR>
 
 autocmd BufReadPre *.log :set nowrap
