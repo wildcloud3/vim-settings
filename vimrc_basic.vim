@@ -151,4 +151,12 @@ endfunction
 nmap <F5> :call Run()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set zeal mapping
+function! LookupZeal()
+	"let type = b:current_syntax
+	exec "!zeal.exe --query open"
+endfunction
 
+"nnoremap <Leader>z :call LookupZeal()<CR><CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
