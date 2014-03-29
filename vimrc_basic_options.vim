@@ -1,13 +1,13 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" color scheme, for peaksea
+" vim:fdm=marker
+
+" color scheme, for peaksea {{{
 if !has("gui_running")
 	set t_Co=256
 endif
 colorscheme peaksea
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeoComplCache options
+" NeoComplCache options {{{
 "if !has('python')
 	let g:neocomplcache_enable_at_startup = 1
 	let g:neocomplcache_enable_smart_case = 1
@@ -48,25 +48,23 @@ autocmd FileType php :set dictionary+=$HOME/vimfiles/dict/php.dict
 autocmd FileType c,h :set dictionary+=$HOME/vimfiles/dict/c.dict
 autocmd FileType cpp,h,hpp :set dictionary+=$HOME/vimfiles/dict/cpp.dict
 autocmd FileType vim :set dictionary+=$HOME/vimfiles/dict/vim.dict
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" bufexplorer options
+" bufexplorer options {{{
 let g:bufExplorerSortBy = 'name'
 nmap <silent> <Leader>be :BufExplorer<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-" for yankring
+" yankring {{{
 nmap <silent> <Leader>yr :YRShow<cr>
 let g:yankring_replace_n_pkey = ''
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" syntastic options
+" syntastic options {{{
 let g:syntastic_enable_highlighting = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nerd tree options
+" nerd tree options {{{
 let NERDChristmasTree=1
 let NERDTreeAutoCenter=1
 let NERDTreeMouseMode=2
@@ -79,49 +77,45 @@ let NERDTreeWinSize=31
 map <silent> <A-t> <ESC>:NERDTreeToggle<CR>
 " set opened nerdtree dir as working dir
 let NERDTreeChDirMode=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" showmarks options
+" showmarks options {{{
 let g:showmarks_enable      = 0
 let g:showmarks_include     = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let g:showmarks_ignore_type = 'hqm'
 " m{mark} setmark; '{mark} jump to mark
 " <leader>mt - toggle showmark
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" options for different color tags
+" options for different color tags {{{
 nmap <silent> <Leader>hl <plug>MarkSet
 vmap <silent> <Leader>hl <plug>MarkSet
 nmap <silent> <Leader>hh <plug>MarkClear
 vmap <silent> <Leader>hh <plug>MarkClear
 nmap <silent> <Leader>hr <plug>MarkRegex
 vmap <silent> <Leader>hr <plug>MarkRegex
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" howmuch options
+" howmuch options {{{
 " The scale of the result
 let g:HowMuch_scale = 2
 " the engine order for auto-calculation
 let g:HowMuch_auto_engines = ['bc', 'vim', 'py']
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-" gundo.vim
+" gundo F2 mapping {{{
 noremap <F2> :GundoToggle<CR>
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" for vim session
+" for vim session {{{
 let g:session_autosave = 1
 let g:session_autoload = 1
 " periodic in minutes
 let g:session_autosave_periodic = 5
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
 
-" tagbar
+" tagbar {{{
 let g:tagbar_autoclose = 1
 let g:tagbar_ctags_bin = '$VIM/settings/vimfiles/ctags.exe'
 noremap <S-F3> :Tagbar<CR>
-
-autocmd BufReadPre *.log :set nowrap
+" }}}

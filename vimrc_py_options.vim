@@ -1,12 +1,10 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" run python
-" in fact, any thing run-script style could be assembled here
+" vim:fdm=marker
 
-nmap <leader>py :!python -B %<cr>
-
+" python syntax {{{
 let python_highlight_all = 1
+" }}}
 
-" run file depend on the script type
+" compile python depend on the script type {{{
 function! Compile()
 	let type = b:current_syntax
 	if type == "python"
@@ -16,7 +14,9 @@ function! Compile()
 endfunction
 
 nmap <F7> :call Compile()<cr>
+" }}}
 
+" gf function for python {{{
 " on this has('python') would also match 32 or 64
 " this should be for load python lib fail
 if has('python')
@@ -29,4 +29,4 @@ for p in sys.path:
 		vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 EOF
 endif
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
