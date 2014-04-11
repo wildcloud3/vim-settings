@@ -44,6 +44,13 @@ Bundle 'majutsushi/tagbar'
 "    charset for differet type of files
 "    the config file is at /vimfiles/editorconfig/.editorconfig
 Bundle 'editorconfig/editorconfig-vim'
+"
+" 10. YouCompleteMe
+"     most powerful complete plugin, finally, it can be under windows:
+"     http://stackoverflow.com/questions/18693526/vim-completion-with-youcompleteme-on-windows
+"     use the verion uplink, not the updated version
+"Bundle 'Valloric/YouCompleteMe'
+Bundle 'xleng/YCM_WIN_X86'
 
 Bundle 'Engspchk'
 Bundle 'FencView.vim'
@@ -70,8 +77,7 @@ Bundle 'Tabular'
 
 " code complete
 Bundle 'AutoClose'
-Bundle 'Shougo/neocomplcache'
-Bundle 'SuperTab'
+Bundle 'OmniCppComplete'
 
 " enchance status line, it's pure vim (compared with powerline of python)
 Bundle 'bling/vim-airline'
