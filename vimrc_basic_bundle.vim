@@ -1,8 +1,11 @@
-" color scheme
+" vim:fdm=marker
+
+" color scheme {{{
 Bundle 'peaksea'
 Bundle 'freya'
+" }}}
 
-" Bundles no need to operate or config
+" useful Bundles no need to operate or config {{{
 "
 " 1. repeat.vim, just extend the function of '.' for plugin maps
 Bundle 'tpope/vim-repeat'
@@ -51,6 +54,15 @@ Bundle 'editorconfig/editorconfig-vim'
 "     use the verion uplink, not the updated version
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'xleng/YCM_WIN_X86'
+"
+" 11. CamelCaseMotion && argtextobj
+"     these two plugin aims to extend vim's motion and textobj behaviour,
+"     CamelCaseMotion is used to navigate between CamelCaseWords or
+"     underscore_notation using '<leader>wbe',
+"     argtextobj is used to navigate between arguments of functions, using 'a' for identify
+Bundle 'vim-scripts/argtextobj.vim'
+Bundle 'bkad/CamelCaseMotion'
+" }}}
 
 Bundle 'Engspchk'
 Bundle 'FencView.vim'
