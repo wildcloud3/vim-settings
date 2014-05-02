@@ -62,6 +62,11 @@ Bundle 'xleng/YCM_WIN_X86'
 "     argtextobj is used to navigate between arguments of functions, using 'a' for identify
 Bundle 'vim-scripts/argtextobj.vim'
 Bundle 'bkad/CamelCaseMotion'
+"
+" 12. vinegar
+"     '-' to hop up the current directory listing
+Bundle 'tpope/vim-vinegar'
+"
 " }}}
 
 Bundle 'Engspchk'
