@@ -67,6 +67,9 @@ Bundle 'bkad/CamelCaseMotion'
 "     '-' to hop up the current directory listing
 Bundle 'tpope/vim-vinegar'
 "
+" 13. vim-polyglot
+"		a package of 50+ language syntax, but still keep fast on loading
+Bundle 'sheerun/vim-polyglot'
 " }}}
 
 Bundle 'Engspchk'

@@ -8,8 +8,8 @@ set nocompatible
 " temporarily, only: basic, c, web
 
 " basic corss language setting chooser {{{
-let g:cfg_option = ['basic', 'c', 'py']
-"let g:cfg_option = ['basic', 'c', 'py', 'web']
+"let g:cfg_option = ['basic', 'c', 'py']
+let g:cfg_option = ['basic', 'c', 'py', 'web']
 " }}}
 
 " basic setting file {{{
