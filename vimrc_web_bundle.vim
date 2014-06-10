@@ -1,16 +1,4 @@
-" syntax highlight
-" no need for these bundles, vim-polyglot takes these all
-" these would be removed in next commit
-"Bundle 'JavaScript-syntax'
 Bundle 'jQuery'
-"Bundle 'othree/html5.vim'
-"Bundle 'groenewege/vim-less'
-"Bundle 'plasticboy/vim-markdown'
-"Bundle 'php.vim-html-enhanced'
-"Bundle 'pangloss/vim-javascript'
-
-" css color preview, show corresponding color on color HEX
-"Bundle 'css-color-preview'
 
 "jump between tags, for html
 Bundle 'matchit.zip'

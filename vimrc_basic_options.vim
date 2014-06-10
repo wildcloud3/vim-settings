@@ -130,3 +130,8 @@ let g:tagbar_autoclose = 1
 let g:tagbar_ctags_bin = '$VIM/settings/vimfiles/ctags.exe'
 noremap <S-F3> :Tagbar<CR>
 " }}}
+" 
+" unite.vim {{{
+" mainly for key bindings
+nnoremap <C-p> :<C-u>Unite<CR>
+" }}}

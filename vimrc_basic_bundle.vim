@@ -28,7 +28,7 @@ Bundle 'YankRing.vim'
 "    c-t, c-v, c-x: open in new tab or split
 "    c-y: create new file
 "    c-z: to (un)?mark multiple file to c-o
-Bundle 'kien/ctrlp.vim'
+"Bundle 'kien/ctrlp.vim'
 "
 " 6. Graphicsed undo tree
 "    bind with <F2>
@@ -68,8 +68,13 @@ Bundle 'bkad/CamelCaseMotion'
 Bundle 'tpope/vim-vinegar'
 "
 " 13. vim-polyglot
-"		a package of 50+ language syntax, but still keep fast on loading
+"	  a package of 50+ language syntax, but still keep fast on loading
 Bundle 'sheerun/vim-polyglot'
+" 
+" 14. unite.vim
+"     Something like ctrlp, but more for supply an intergration interface
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neomru.vim'
 " }}}
 
 Bundle 'Engspchk'
