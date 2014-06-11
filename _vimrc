@@ -43,7 +43,8 @@ endif
 " }}}
 
 " reload after edit _vimrc {{{
-autocmd! bufwritepost _vimrc source $VIM/settings/_vimrc
+" disable for seldomly change on _vimrc, mostly on over files
+"autocmd! bufwritepost _vimrc source $VIM/settings/_vimrc
 " }}}
 
 " set vundle {{{

@@ -30,12 +30,12 @@ set laststatus=2
 "set guioptions-=b
 set go=
 
-" launch maximize window 
+" launch maximize window
 if has('gui_running')
-	if has('win32')
-		autocmd GUIEnter * simalt ~x
-	endif 
-endif 
+    if has('win32')
+        autocmd GUIEnter * simalt ~x
+    endif
+endif
 " }}}
 
 " set working dir as current file's dir {{{
@@ -71,8 +71,8 @@ set noerrorbells
 
 " match and line style {{{
 set wildmenu
-" ignore compiled files
-set wildignore=*.o,*~
+" ignore files and folders
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*.o,*~
 
 " always show line number
 set number
@@ -110,7 +110,7 @@ set so=10
 
 " share the clipboard with windows {{{
 if has('win32')
-	set clipboard+=unnamed
+    set clipboard+=unnamed
 endif
 " }}}
 
@@ -132,12 +132,12 @@ set background=dark
 
 " run file depend on the script type {{{
 function! Run()
-	let type = b:current_syntax
-	if type == "python"
-		exec "!python -B %"
-	elseif type == "dosbatch"
-		exec "!%"
-	endif
+    let type = b:current_syntax
+    if type == "python"
+        exec "!python -B %"
+    elseif type == "dosbatch"
+        exec "!%"
+    endif
 endfunction
 
 nmap <F5> :call Run()<cr>
@@ -145,9 +145,34 @@ nmap <F5> :call Run()<cr>
 
 " zeal mapping (not active now) {{{
 function! LookupZeal()
-	"let type = b:current_syntax
-	exec "!zeal.exe --query open"
+    "let type = b:current_syntax
+    exec "!zeal.exe --query open"
 endfunction
 
 "nnoremap <Leader>z :call LookupZeal()<CR><CR>
+" }}}
+
+" some mapping learned from dotvim {{{
+" aux functions {{{
+function! Preserve(command) "{{{
+    " preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    execute a:command
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction "}}}
+function! StripTrailingWhitespace() "{{{
+    call Preserve("%s/\\s\\+$//e")
+endfunction "}}}
+"}}}
+set backspace=indent,eol,start
+nmap <leader>fef :call Preserve("normal gg=G")<CR>
+nmap <leader>f$ :call StripTrailingWhitespace()<CR>
+vmap <leader>s :sort<CR>
+inoremap <C-h> <left>
+inoremap <C-l> <right>
 " }}}

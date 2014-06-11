@@ -74,6 +74,9 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimproc.vim'
 " }}}
 
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+
 NeoBundle 'Engspchk'
 NeoBundle 'FencView.vim'
 

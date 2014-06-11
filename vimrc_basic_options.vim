@@ -28,8 +28,15 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_key_invoke_completion = '<M-;>'  
 " 设置转到定义处的快捷键为ALT + G，这个功能非常赞  
 nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>  
-" allow scan string and comments
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+let g:ycm_filetype_blacklist={'unite': 1}
+
+function! UltiSnipsCallUnite()
+    Unite -start-insert -immediately -no-empty ultisnips
+endfunction
+
+nnoremap <silent> <leader>sn :call UltiSnipsCallUnite()<CR>
+inoremap <silent> <S-F11> <ESC>:call UltiSnipsCallUnite()<CR>
 " }}}
 
 " set dict files
@@ -109,3 +116,4 @@ let g:vimfiler_as_default_explorer = 1
 nnoremap <silent> <A-t> <ESC>:VimFilerExplorer<CR>
 "nmap - :VimFiler<CR>
 " }}}
+" 
