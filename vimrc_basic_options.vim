@@ -47,6 +47,10 @@ let g:yankring_replace_n_pkey = ''
 
 " syntastic options {{{
 let g:syntastic_enable_highlighting = 1
+let g:syntastic_mode_map = { 'mode': 'passive',
+                           \ 'active_filetypes': ['ruby', 'php'],
+                           \ 'passive_filetypes': ['puppet'] }
+nnoremap <leader>chk :SyntasticCheck<CR>
 " }}}
 
 " showmarks options {{{
