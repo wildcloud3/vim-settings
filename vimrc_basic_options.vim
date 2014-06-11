@@ -21,7 +21,7 @@ let g:ycm_collect_identifiers_from_tags_files=1
 " 从第一个键入字符就开始罗列匹配项  
 let g:ycm_min_num_of_chars_for_completion=1  
 " 禁止缓存匹配项，每次都重新生成匹配项  
-let g:ycm_cache_omnifunc=0  
+let g:ycm_cache_omnifunc=0
 " 语法关键字补全              
 let g:ycm_seed_identifiers_with_syntax=1  
 " 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;  
@@ -32,39 +32,12 @@ nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<C
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " }}}
 
-" OmniCppComplete options {{{
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
-
-" other
-autocmd FileType php,phtml setlocal omnifunc=phpcomplete#CompletePHP
-autocmd FileType css,less setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" use syntax complete if nothing else available
-if has("autocmd") && exists("+omnifunc")
-	autocmd FileType *
-		\ if &omnifunc == "" |
-		\     setlocal omnifunc=syntaxcomplete#Complete |
-		\ endif
-endif
-
 " set dict files
-autocmd FileType js :set dictionary+=$HOME/vimfiles/dict/javascript.dict
-autocmd FileType php :set dictionary+=$HOME/vimfiles/dict/php.dict
-autocmd FileType c,h :set dictionary+=$HOME/vimfiles/dict/c.dict
-autocmd FileType cpp,h,hpp :set dictionary+=$HOME/vimfiles/dict/cpp.dict
-autocmd FileType vim :set dictionary+=$HOME/vimfiles/dict/vim.dict
-" }}}
-
-" bufexplorer options {{{
-let g:bufExplorerSortBy = 'name'
-nmap <silent> <Leader>be :BufExplorer<cr>
-" }}}
+"autocmd FileType js :set dictionary+=$HOME/vimfiles/dict/javascript.dict
+"autocmd FileType php :set dictionary+=$HOME/vimfiles/dict/php.dict
+"autocmd FileType c,h :set dictionary+=$HOME/vimfiles/dict/c.dict
+"autocmd FileType cpp,h,hpp :set dictionary+=$HOME/vimfiles/dict/cpp.dict
+"autocmd FileType vim :set dictionary+=$HOME/vimfiles/dict/vim.dict
 
 " yankring {{{
 nmap <silent> <Leader>yr :YRShow<cr>
@@ -73,21 +46,6 @@ let g:yankring_replace_n_pkey = ''
 
 " syntastic options {{{
 let g:syntastic_enable_highlighting = 1
-" }}}
-
-" nerd tree options {{{
-"let NERDChristmasTree=1
-"let NERDTreeAutoCenter=1
-"let NERDTreeMouseMode=2
-"let NERDTreeShowBookmarks=1
-"let NERDTreeShowFiles=1
-"let NERDTreeShowLineNumber=1
-"let NERDTreeWinPos='left'
-"let NERDTreeWinSize=31
-" !t : open nerd tree
-"map <silent> <A-t> <ESC>:NerrdTreeToggle<CR>
-" set opened nerdtree dir as working dir
-"let NERDTreeChDirMode=1
 " }}}
 
 " showmarks options {{{
@@ -137,10 +95,17 @@ nnoremap <C-p> :<C-u>Unite<CR>
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>r :<C-u>Unite -start-insert file_rec<CR>
+
+" replace vinegar with unite
+nmap - :<C-u>Unite file<CR>
+
+" replace bufexplorer with unite
+nmap <silent> <Leader>be :Unite buffer<CR>
 " }}}
 " 
 " unite.vim {{{
 let g:vimfiler_as_default_explorer = 1
 " !t : open vimifiler explorer
 nnoremap <silent> <A-t> <ESC>:VimFilerExplorer<CR>
+"nmap - :VimFiler<CR>
 " }}}
