@@ -75,13 +75,18 @@ Bundle 'sheerun/vim-polyglot'
 "     Something like ctrlp, but more for supply an intergration interface
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neomru.vim'
+" 
+" 15. vimfiler
+"     the one may replace nerd tree
+Bundle 'Shougo/vimfiler.vim'
 " }}}
 
 Bundle 'Engspchk'
 Bundle 'FencView.vim'
 
 Bundle 'bufexplorer.zip'
-Bundle 'The-NERD-tree'
+"replaced with vimfiler
+"Bundle 'The-NERD-tree'
 Bundle 'The-NERD-Commenter'
 
 Bundle 'Lokaltog/vim-easymotion'

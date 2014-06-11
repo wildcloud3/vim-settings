@@ -76,18 +76,18 @@ let g:syntastic_enable_highlighting = 1
 " }}}
 
 " nerd tree options {{{
-let NERDChristmasTree=1
-let NERDTreeAutoCenter=1
-let NERDTreeMouseMode=2
-let NERDTreeShowBookmarks=1
-let NERDTreeShowFiles=1
-let NERDTreeShowLineNumber=1
-let NERDTreeWinPos='left'
-let NERDTreeWinSize=31
+"let NERDChristmasTree=1
+"let NERDTreeAutoCenter=1
+"let NERDTreeMouseMode=2
+"let NERDTreeShowBookmarks=1
+"let NERDTreeShowFiles=1
+"let NERDTreeShowLineNumber=1
+"let NERDTreeWinPos='left'
+"let NERDTreeWinSize=31
 " !t : open nerd tree
-map <silent> <A-t> <ESC>:NERDTreeToggle<CR>
+"map <silent> <A-t> <ESC>:NerrdTreeToggle<CR>
 " set opened nerdtree dir as working dir
-let NERDTreeChDirMode=1
+"let NERDTreeChDirMode=1
 " }}}
 
 " showmarks options {{{
@@ -134,4 +134,13 @@ noremap <S-F3> :Tagbar<CR>
 " unite.vim {{{
 " mainly for key bindings
 nnoremap <C-p> :<C-u>Unite<CR>
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>r :<C-u>Unite -start-insert file_rec<CR>
+" }}}
+" 
+" unite.vim {{{
+let g:vimfiler_as_default_explorer = 1
+" !t : open vimifiler explorer
+nnoremap <silent> <A-t> <ESC>:VimFilerExplorer<CR>
 " }}}
