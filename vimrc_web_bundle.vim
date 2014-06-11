@@ -1,10 +1,10 @@
-Bundle 'jQuery'
+NeoBundle 'jQuery'
 
 "jump between tags, for html
-Bundle 'matchit.zip'
-Bundle 'MatchTag'
+NeoBundle 'matchit.zip'
+NeoBundle 'MatchTag'
 
 " Zen coding
-Bundle 'ZenCoding.vim'
-Bundle 'rstacruz/sparkup'
+NeoBundle 'ZenCoding.vim'
+NeoBundle 'rstacruz/sparkup'
 

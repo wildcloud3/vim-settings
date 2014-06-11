@@ -1,11 +1,11 @@
 " set C specified vundles
 
-Bundle 'SrcExpl'
-Bundle 'taglist.vim'
-Bundle 'Trinity'
+NeoBundle 'SrcExpl'
+NeoBundle 'taglist.vim'
+NeoBundle 'Trinity'
 
-Bundle 'DoxygenToolkit.vim'
+NeoBundle 'DoxygenToolkit.vim'
 
-Bundle 'a.vim'
-Bundle 'c.vim'
-Bundle 'echofunc.vim'
+NeoBundle 'a.vim'
+NeoBundle 'c.vim'
+NeoBundle 'echofunc.vim'

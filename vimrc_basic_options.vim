@@ -94,7 +94,7 @@ noremap <S-F3> :Tagbar<CR>
 nnoremap <C-p> :<C-u>Unite<CR>
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>r :<C-u>Unite -start-insert file_rec<CR>
+nnoremap <leader>r :<C-u>Unite -start-insert file_rec/async<CR>
 
 " replace vinegar with unite
 nmap - :<C-u>Unite file<CR>

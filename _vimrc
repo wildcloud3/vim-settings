@@ -52,11 +52,12 @@ autocmd! bufwritepost _vimrc source $VIM/settings/_vimrc
 filetype off
 
 " set vundle path
-set rtp+=$VIM/settings/vimfiles/bundle/vundle/
-call vundle#rc('$VIM/settings/vimfiles/bundle/')
+set rtp+=$VIM/settings/vimfiles/bundle/neobundle.vim/
+call neobundle#begin('$VIM/settings/vimfiles/bundle/')
 
 " vundle core
-Bundle 'gmarik/vundle'
+"Bundle 'gmarik/vundle'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 for item in g:cfg_option
 	let s:vim_script = $VIM . '/settings/vimrc_' . item . '_bundle.vim'
@@ -65,8 +66,12 @@ for item in g:cfg_option
 	endif
 endfor
 
+call neobundle#end()
+
 "active plugin and filetype relationship
 filetype plugin indent on	" required!
+
+NeoBundleCheck
 " }}}
 
 " load language specify {{{
