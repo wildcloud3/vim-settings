@@ -93,8 +93,10 @@ NeoBundle 'Tabular'
 
 " ack is for file content search under given dir_rec
 "NeoBundle 'ack.vim'
-" git plugin
+" git plugin, not so heavy use of git
 "NeoBundle 'fugitive.vim'
+" an vim interactive merge tool
+"NeoBundle 'idanarye/vim-merginal'
 
 " code complete
 NeoBundle 'AutoClose'
