@@ -72,10 +72,11 @@ NeoBundle 'Shougo/vimfiler.vim'
 " in new system, need to be rebuild with n?make
 " ref the :h vimproc for detail
 NeoBundle 'Shougo/vimproc.vim'
-" }}}
-
+"
+" 15. ultisnips, configed using unite
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
+" }}}
 
 NeoBundle 'Engspchk'
 NeoBundle 'FencView.vim'
@@ -95,7 +96,8 @@ NeoBundle 'Mark'
 NeoBundle 'Tabular'
 
 " ack is for file content search under given dir_rec
-"NeoBundle 'ack.vim'
+" still need external executable file for ack(php)
+"NeoBundle 'mileszs/ack.vim'
 " git plugin, not so heavy use of git
 "NeoBundle 'fugitive.vim'
 " an vim interactive merge tool

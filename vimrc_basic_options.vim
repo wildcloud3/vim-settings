@@ -37,14 +37,8 @@ endfunction
 
 nnoremap <silent> <leader>sn :call UltiSnipsCallUnite()<CR>
 inoremap <silent> <S-F11> <ESC>:call UltiSnipsCallUnite()<CR>
+"let g:UltiSnipsExpandTrigger="<c-s>"
 " }}}
-
-" set dict files
-"autocmd FileType js :set dictionary+=$HOME/vimfiles/dict/javascript.dict
-"autocmd FileType php :set dictionary+=$HOME/vimfiles/dict/php.dict
-"autocmd FileType c,h :set dictionary+=$HOME/vimfiles/dict/c.dict
-"autocmd FileType cpp,h,hpp :set dictionary+=$HOME/vimfiles/dict/cpp.dict
-"autocmd FileType vim :set dictionary+=$HOME/vimfiles/dict/vim.dict
 
 " yankring {{{
 nmap <silent> <Leader>yr :YRShow<cr>
@@ -98,16 +92,22 @@ noremap <S-F3> :Tagbar<CR>
 " 
 " unite.vim {{{
 " mainly for key bindings
-nnoremap <C-p> :<C-u>Unite<CR>
+nnoremap <leader>u :<C-u>Unite<CR>
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>r :<C-u>Unite -start-insert file_rec/async<CR>
+nnoremap <c-p> :<C-u>Unite -start-insert file_rec/async<CR>
 
 " replace vinegar with unite
 nmap - :<C-u>Unite file<CR>
 
 " replace bufexplorer with unite
-nmap <silent> <Leader>be :Unite buffer<CR>
+nmap <silent> <Leader>be :Unite -quick-match buffer<CR>
+
+" replace ack or grep(content search) using unite
+nmap <silent> <Leader>ss :<C-u>Unite grep:.<CR>
+
+let g:unite_source_history_yank_enable = 1
+nnoremap <leader>y :<C-u>Unite history/yank<CR>
 " }}}
 " 
 " unite.vim {{{
