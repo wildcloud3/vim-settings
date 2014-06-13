@@ -1,11 +1,5 @@
 " vim:fdm=marker
 
-" taglist option {{{
-map <F3> :silent! Tlist<CR>
-let g:Tlist_Ctags_Cmd=$VIM.'\settings\vimfiles\ctags.exe'
-" tags folder
-set tags+=$VIM/settings/vimfiles/tags/cpp
-
 " set other for trinity
 " open and close tri all
 nmap <C-S-F9> :TrinityToggleAll<cr>

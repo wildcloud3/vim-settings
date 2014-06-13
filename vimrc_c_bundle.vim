@@ -1,7 +1,6 @@
 " set C specified vundles
 
 NeoBundle 'SrcExpl'
-NeoBundle 'taglist.vim'
 NeoBundle 'Trinity'
 
 NeoBundle 'DoxygenToolkit.vim'

@@ -84,9 +84,9 @@ let g:session_autosave_periodic = 5
 " }}}
 
 " tagbar {{{
-let g:tagbar_autoclose = 1
-"let g:tagbar_ctags_bin = '$VIM/settings/vimfiles/ctags.exe'
-noremap <S-F3> :Tagbar<CR>
+"let g:tagbar_autoclose = 1
+let g:tagbar_ctags_bin = '$VIM/settings/vimfiles/ctags.exe'
+noremap <F3> :Tagbar<CR>
 " }}}
 " 
 " unite.vim {{{
