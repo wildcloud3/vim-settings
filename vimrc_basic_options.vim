@@ -40,11 +40,6 @@ inoremap <silent> <S-F11> <ESC>:call UltiSnipsCallUnite()<CR>
 "let g:UltiSnipsExpandTrigger="<c-s>"
 " }}}
 
-" yankring {{{
-nmap <silent> <Leader>yr :YRShow<cr>
-let g:yankring_replace_n_pkey = ''
-" }}}
-
 " syntastic options {{{
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_mode_map = { 'mode': 'passive',
@@ -90,7 +85,7 @@ let g:session_autosave_periodic = 5
 
 " tagbar {{{
 let g:tagbar_autoclose = 1
-let g:tagbar_ctags_bin = '$VIM/settings/vimfiles/ctags.exe'
+"let g:tagbar_ctags_bin = '$VIM/settings/vimfiles/ctags.exe'
 noremap <S-F3> :Tagbar<CR>
 " }}}
 " 

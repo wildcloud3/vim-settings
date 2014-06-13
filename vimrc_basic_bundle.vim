@@ -17,9 +17,11 @@ NeoBundle 'henrik/vim-indexed-search'
 "
 " 3. syntax checker, but based on the tools in $PATH,
 "    like pyflakes, pylint, gcc (there's a lot under it's folder)
+"    bound to <leader>chk
 NeoBundle 'scrooloose/syntastic'
 "
-" 4. Persistence yank files, use <leader>yr to show :YRShow
+" 4. Persistence yank files, :YRShow
+"    access by <leader>y using unite
 NeoBundle 'YankRing.vim'
 "
 " 5. Graphicsed undo tree
