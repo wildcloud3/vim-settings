@@ -1,5 +1,8 @@
 " vim:fdm=marker
 
+" for speed debug
+"set vbs=4
+
 set nocompatible
 "source $VIMRUNTIME/mswin.vim
 

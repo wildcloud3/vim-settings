@@ -58,11 +58,18 @@ let g:showmarks_ignore_type = 'hqm'
 
 " options for different color tags {{{
 nmap <silent> <Leader>hl <plug>MarkSet
+nmap <silent> <c-l><c-l> <plug>MarkSet
 vmap <silent> <Leader>hl <plug>MarkSet
-nmap <silent> <Leader>hh <plug>MarkClear
-vmap <silent> <Leader>hh <plug>MarkClear
+nmap <silent> <Leader>hc <plug>MarkClear
+nmap <silent> <c-s-l> <plug>MarkClear
+vmap <silent> <Leader>hc <plug>MarkClear
 nmap <silent> <Leader>hr <plug>MarkRegex
 vmap <silent> <Leader>hr <plug>MarkRegex
+nmap <silent> <c-l><c-r> <plug>MarkRegex
+" }}}
+
+" Tabularize options {{{
+nmap <silent> <leader>a= :Tabularize /=<CR>
 " }}}
 
 " howmuch options {{{
@@ -77,10 +84,9 @@ noremap <F2> :GundoToggle<CR>
 " }}}
 
 " for vim session {{{
-let g:session_autosave = 1
-let g:session_autoload = 1
+let g:session_autoload = 'no'
 " periodic in minutes
-let g:session_autosave_periodic = 5
+"let g:session_autosave_periodic = 5
 " }}}
 
 " tagbar {{{

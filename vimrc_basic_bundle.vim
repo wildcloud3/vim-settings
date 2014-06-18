@@ -89,24 +89,33 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'ShowTrailingWhitespace'
 
 " setting marks
-NeoBundle 'mikeage/ShowMarks'
-" different color for tags
+" m{mark} setmark; '{mark} jump to mark
+" <leader>mt to show/hide marks
+NeoBundle 'ShowMarks'
+
+" different color 
+" <leader>hl or ^l^l to set current word
+" <leader>hc or ^L to clear
+" <leader>hr or ^l^r to highlight using regex
 NeoBundle 'Mark'
 
 " need to change src to support ch,
 " pls ref: https://github.com/muzuiget/hacking-patches/blob/master/tabular_cjk_width.patch
+" :Tab /=[\zs], align with =, \zs to exclude align marker '='
+" bound with <leader>a=
 NeoBundle 'Tabular'
 
 " ack is for file content search under given dir_rec
 " still need external executable file for ack(php)
 "NeoBundle 'mileszs/ack.vim'
+
 " git plugin, not so heavy use of git
 "NeoBundle 'fugitive.vim'
 " an vim interactive merge tool
 "NeoBundle 'idanarye/vim-merginal'
 
-" code complete
-NeoBundle 'AutoClose'
+" brackets complete
+NeoBundle 'auto-pairs'
 
 " enchance status line, it's pure vim (compared with powerline of python)
 NeoBundle 'bling/vim-airline'
@@ -117,4 +126,5 @@ if !has('win32')
 endif
 
 " vim calculator
+" just <leader>? in visual mode
 NeoBundle 'HowMuch'
