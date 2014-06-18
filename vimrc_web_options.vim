@@ -10,4 +10,7 @@ autocmd FileType javascript set errorformat=%f(%l):\ %m
 autocmd FileType javascript inoremap <silent> <F5> <C-o>:make<cr>
 autocmd FileType javascript map <silent> <F5> :make<CR>
 " }}}
-
+" 
+" for jquery syntax {{{
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+" }}}
