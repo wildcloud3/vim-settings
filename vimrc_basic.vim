@@ -51,8 +51,8 @@ set ambiwidth=double
 " }}}
 
 " source menu stuffs {{{
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+"source $VIMRUNTIME/delmenu.vim
+"source $VIMRUNTIME/menu.vim
 " }}}
 
 " disable temp files {{{
