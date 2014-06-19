@@ -1,12 +1,12 @@
 " vim:fdm=marker
 
+" taglist option {{{
+let g:Tlist_Ctags_Cmd=$VIM.'\settings\vimfiles\ctags.exe'
+" tags folder
+set tags+=$VIM/settings/vimfiles/tags/cpp
 " set other for trinity
 " open and close tri all
 nmap <C-S-F9> :TrinityToggleAll<cr>
-" open and close taglist all
-nmap <F10> :TrinityToggleTagList<cr>
-" open and close nerdtree all
-nmap <F11> :TrinityToggleNERDTree<cr>
 
 function! UpdateTags()
 silent execute '!' . g:Tlist_Ctags_Cmd . ' -R --fields=+ianS --extra=+q'
