@@ -7,3 +7,4 @@ NeoBundle 'MatchTag'
 " Zen coding now named to Emmet
 "NeoBundle 'Emmet.vim'
 
+NeoBundle 'othree/html5.vim'

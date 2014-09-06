@@ -1,7 +1,7 @@
 " vim:fdm=marker
 
 " for js only {{{
-set complete+=k
+au BufRead,BufNewFile *.js set complete+=k
 " }}}
 
 " jsl for js check {{{
@@ -12,5 +12,5 @@ autocmd FileType javascript map <silent> <F5> :make<CR>
 " }}}
 " 
 " for jquery syntax {{{
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+au BufRead,BufNewFile jquery*.js set ft=javascript syntax=jquery
 " }}}

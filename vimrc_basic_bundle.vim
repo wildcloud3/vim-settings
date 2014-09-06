@@ -81,7 +81,7 @@ NeoBundle 'honza/vim-snippets'
 " }}}
 
 NeoBundle 'Engspchk'
-NeoBundle 'FencView.vim'
+NeoBundle 'mbbill/fencview'
 
 NeoBundle 'The-NERD-Commenter'
 

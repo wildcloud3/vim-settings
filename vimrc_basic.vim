@@ -97,7 +97,8 @@ set tabstop=4
 set expandtab
 
 " and some different options based on filetype
-autocmd BufNewFile, BufRead *.html, *.htm, *.css, *.js set noexpandtab tabstop=2 shiftwidth=2
+au BufRead,BufNewFile *.html,*.htm,*.css,*.js set noexpandtab tabstop=2 shiftwidth=2
+au BufRead,BufNewFile *.html,*.htm set ft=html
 "autocmd BufNewFile, BufRead *.py set nosmarttab
 
 set foldmethod=indent
