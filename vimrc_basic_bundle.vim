@@ -46,8 +46,8 @@ NeoBundle 'editorconfig/editorconfig-vim'
 "     most powerful complete plugin, finally, it can be under windows:
 "     http://stackoverflow.com/questions/18693526/vim-completion-with-youcompleteme-on-windows
 "     use the verion uplink, not the updated version
-"NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'xleng/YCM_WIN_X86'
+NeoBundle 'Valloric/YouCompleteMe'
+"NeoBundle 'xleng/YCM_WIN_X86'
 "
 " 10. CamelCaseMotion && argtextobj
 "     these two plugin aims to extend vim's motion and textobj behaviour,
@@ -73,11 +73,14 @@ NeoBundle 'Shougo/vimfiler.vim'
 " 14. vimproc, async executor, maybe replaced by neovim in the future
 " in new system, need to be rebuild with n?make
 " ref the :h vimproc for detail
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimproc.vim', {'build' : {'windows' : 'make -f make_mingw32.mak', 'mac' : 'make -f make_mac.mak',},}
 "
 " 15. ultisnips, configed using unite
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
+"
+" 16. enhance of increment search
+NeoBundle 'haya14busa/incsearch.vim'
 " }}}
 
 NeoBundle 'Engspchk'
@@ -122,7 +125,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
 
 if !has('win32')
-	NeoBundle 'powerline'
+	"NeoBundle 'powerline'
 endif
 
 " vim calculator

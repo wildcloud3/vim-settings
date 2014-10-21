@@ -4,19 +4,18 @@
 "set vbs=4
 
 set nocompatible
-"source $VIMRUNTIME/mswin.vim
 
 " zhuliang.li, 2013.07.27
 " config my personal vim setting here
 " temporarily, only: basic, c, web
 
 " basic corss language setting chooser {{{
-"let g:cfg_option = ['basic', 'c', 'py']
-let g:cfg_option = ['basic', 'c', 'py', 'web']
+let g:cfg_option = ['basic', 'web', 'py']
+"let g:cfg_option = ['basic', 'c', 'py', 'web']
 " }}}
 
 " basic setting file {{{
-source $VIM/settings/vimrc_basic.vim
+source $HOME/vim-settings/vimrc_basic.vim
 " }}}
 
 " auto save on lost focus {{{
@@ -29,7 +28,7 @@ autocmd FocusLost * silent! wa
 set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
 "set guifont=Source_Code_Pro:h10:cANSI
 "set guifont=Courier_New:h10:cANSI
-set guifontwide=YouYuan:h12
+"set guifontwide=YouYuan:h12
 " }}}
 
 " set IME {{{
@@ -47,7 +46,7 @@ endif
 
 " reload after edit _vimrc {{{
 " disable for seldomly change on _vimrc, mostly on over files
-"autocmd! bufwritepost _vimrc source $VIM/settings/_vimrc
+"autocmd! bufwritepost _vimrc source $HOME/vim-settings/_vimrc
 " }}}
 
 " set vundle {{{
@@ -56,15 +55,15 @@ endif
 filetype off
 
 " set vundle path
-set rtp+=$VIM/settings/vimfiles/bundle/neobundle.vim/
-call neobundle#begin('$VIM/settings/vimfiles/bundle/')
+set rtp+=$HOME/vim-settings/vimfiles/bundle/neobundle.vim/
+call neobundle#begin('$HOME/vim-settings/vimfiles/bundle/')
 
 " vundle core
 "Bundle 'gmarik/vundle'
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 for item in g:cfg_option
-	let s:vim_script = $VIM . '/settings/vimrc_' . item . '_bundle.vim'
+	let s:vim_script = $HOME . '/vim-settings/vimrc_' . item . '_bundle.vim'
 	if filereadable(s:vim_script)
 		execute "source " . s:vim_script
 	endif
@@ -80,7 +79,7 @@ NeoBundleCheck
 
 " load language specify {{{
 for item in g:cfg_option
-	let s:vim_script = $VIM . '/settings/vimrc_' . item . '_options.vim'
+	let s:vim_script = $HOME . '/vim-settings/vimrc_' . item . '_options.vim'
 	if filereadable(s:vim_script)
 		execute "source " . s:vim_script
 	endif

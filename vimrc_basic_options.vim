@@ -113,6 +113,8 @@ nmap <silent> <Leader>ss :<C-u>Unite grep:.<CR>
 
 let g:unite_source_history_yank_enable = 1
 nnoremap <leader>y :<C-u>Unite history/yank<CR>
+let g:yankring_replace_n_pkey = '<Char-172>'
+let g:yankring_replace_n_nkey = '<Char-174>'
 " }}}
 " 
 " unite.vim {{{
@@ -122,3 +124,8 @@ nnoremap <silent> <A-t> <ESC>:VimFilerExplorer<CR>
 "nmap - :VimFiler<CR>
 " }}}
 " 
+" incsearch.vim {{{
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" }}}
