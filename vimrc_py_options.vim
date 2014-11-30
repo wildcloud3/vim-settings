@@ -10,6 +10,9 @@ function! Compile()
 	if type == "python"
         "let l:compile_script = substitute(bufname('%'), '.py', '.exe.py', 'g')
 		exec "!python % py2exe"
+    elseif type == "less"
+        let l:output_script = substitute(bufname('%'), '.less', '.css', 'g')
+		exec "!lessc % > " . l:output_script
 	endif
 endfunction
 
